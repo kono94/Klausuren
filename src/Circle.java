@@ -83,7 +83,7 @@ public class Circle extends Frame {
 	@Override
 	public void paint(Graphics g){
 		g.setColor(m_Color);
-		g.drawOval(x, y, w, h);		
+		g.drawOval(x, y, w, h);	
 	}
 	public static void main(String[] args){
 		new Circle();

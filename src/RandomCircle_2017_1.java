@@ -84,7 +84,7 @@ class View extends JFrame{
 		 
 		 @Override
 		 public void paintComponent(Graphics g){
-			 super.paintComponent(g);
+			 //super.paintComponent(g);
 			 g.drawOval(m_Model.getPoint().x, m_Model.getPoint().y, m_Model.getRadius(), m_Model.getRadius());
 		 }
 		 
