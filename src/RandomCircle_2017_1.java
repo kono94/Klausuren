@@ -4,6 +4,8 @@ import java.awt.Dimension;
 import java.awt.Graphics;
 import java.awt.Insets;
 import java.awt.Point;
+
+import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.JSlider;
@@ -54,8 +56,14 @@ class View extends JFrame{
 		setSize(500,500);
 		drawingPanel = new DrawingPanel();		
 		m_Model = m;	
-		slider = new JSlider(20,200, 100);		
+		slider = new JSlider(20,200, 100);	
+		JButton red = new JButton(){
+			{ addActionListener(e->{
+				System.out.println("kek");
+			});}
+		};
 		add(BorderLayout.SOUTH, slider);
+		
 		add(BorderLayout.CENTER, drawingPanel);
 		
 		pack();

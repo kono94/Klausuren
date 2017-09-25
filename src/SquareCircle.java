@@ -1,6 +1,9 @@
 import java.awt.*;
+import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+
+import javax.swing.JButton;
 
 public class SquareCircle extends Frame {
 	private Point m_PointA = null;
@@ -14,6 +17,8 @@ public class SquareCircle extends Frame {
 	
 		setSize(500,500);
 		setVisible(true);
+	
+		
 		addMouseListener(new MouseAdapter(){
 			@Override
 			public void mousePressed(MouseEvent e){			
@@ -46,6 +51,7 @@ public class SquareCircle extends Frame {
 		w = (int) Math.abs(m_PointA.getX() - m_PointB.getX());
 		h = (int) Math.abs(m_PointA.getY() - m_PointB.getY());	
 		System.out.println(x + " " + y + " " + w + " " + h );
+	
 		m_PointA = null;
 		m_PointB = null;
 		//  printTestPage(); Test fürs drucken
