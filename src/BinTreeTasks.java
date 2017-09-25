@@ -1,4 +1,4 @@
-
+import Binary.Node;
 
 class Binary {
 	public Node m_Root = null;
@@ -57,20 +57,34 @@ class Binary {
 			return a.m_Key;
 		}
 	}
-	float avg() {
-		 int[] sum = new int[2];
-		 avg_helper(m_Root, sum);
-		 return sum[0] / sum[1];
-	}
+	//	float avg() {
+//	 int[] sum = new int[2];
+//	 avg_helper(m_Root, sum);
+//	 return sum[0] / sum[1];
+//}
+//
+//void avg_helper(Node n, int[] sum) {
+//	if (n != null) {
+//		sum[0] = n.m_Key + sum[0];
+//		sum[1]++;
+//		avg_helper(n.m_Left, sum);
+//		avg_helper(n.m_Right, sum);
+//	}			
+//}
+float avg() {			
+	 return  avg_helper(m_Root, 0,0);
+}
 
-	void avg_helper(Node n, int[] sum) {
-		if (n != null) {
-			sum[0] = n.m_Key + sum[0];
-			sum[1]++;
-			avg_helper(n.m_Left, sum);
-			avg_helper(n.m_Right, sum);
-		}			
-	}
+float avg_helper(Node n, int sum, int count) {
+	if (n != null) {
+		sum += n.m_Key;
+		++count;
+		avg_helper(n.m_Left, sum, count);
+		avg_helper(n.m_Right, sum,count);
+	}		
+	return sum/count;
+}
+
 	
 	public int[]minMax(){
 		int[] result = new int[2];
