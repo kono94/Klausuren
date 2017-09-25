@@ -28,6 +28,18 @@ public class SquareCircle extends Frame {
 		});
 		
 	}
+	public void printTestPage(){
+		PrintJob pJob = getToolkit().getPrintJob(this, "Testpage", new JobAttributes(), new PageAttributes());
+		if(pJob != null){
+			Dimension dim = pJob.getPageDimension();
+			Graphics g = pJob.getGraphics();
+			if(g!=null){
+				paint(g);
+				g.dispose();
+			}
+			pJob.end();
+		}
+	}
 	private void calcRect(){		
 		x = (int) (m_PointA.getX() < m_PointB.getX() ? m_PointA.getX() : m_PointB.getX());
 		y = (int) (m_PointA.getY() < m_PointB.getY() ? m_PointA.getY() : m_PointB.getY());
@@ -36,6 +48,7 @@ public class SquareCircle extends Frame {
 		System.out.println(x + " " + y + " " + w + " " + h );
 		m_PointA = null;
 		m_PointB = null;
+		//  printTestPage(); Test fürs drucken
 	}
 	
 	@Override	public void paint(Graphics g){		

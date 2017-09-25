@@ -1,20 +1,24 @@
 import java.awt.*;
 import java.awt.event.*;
+
+import javax.swing.JButton;
 import javax.swing.JFrame;
+import javax.swing.JPanel;
 
 
 
 public class Klausur_2013 extends JFrame {
 	private Color m_Color;
 	private boolean drawCircle;
-	private Panel drawingPanel;
+	private JPanel drawingPanel;
 	public Klausur_2013(){
 		m_Color = Color.RED;
 		setLayout(new BorderLayout());
-		Panel buttonPanel = new Panel();
+		JPanel buttonPanel = new JPanel();
 		buttonPanel.setLayout(new FlowLayout());
-		drawingPanel = new Panel(){
-			public void paint(Graphics g){
+		drawingPanel = new JPanel(){
+			public void paintComponent(Graphics g){
+				super.paintComponent(g);
 				g.setColor(m_Color);
 				if(drawCircle)
 					g.drawOval(getWidth()/2 - 25, getHeight()/2 - 25 , 50, 50);
@@ -22,10 +26,10 @@ public class Klausur_2013 extends JFrame {
 					g.drawRect(getWidth()/2 - 25, getHeight()/2 - 25 , 50, 50);
 			}
 		};
-		Button red = new Button("red");
-		Button green = new Button("green");
-		Button circle = new Button("circle");
-		Button rect = new Button("rect");
+		JButton red = new JButton("red");
+		JButton green = new JButton("green");
+		JButton circle = new JButton("circle");
+		JButton rect = new JButton("rect");
 		red.addActionListener(e->{
 			m_Color = Color.RED;
 			drawingPanel.repaint();

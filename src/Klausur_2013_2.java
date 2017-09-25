@@ -4,25 +4,28 @@ import java.awt.Dimension;
 import java.awt.FlowLayout;
 import java.awt.Graphics;
 import java.awt.Image;
-import java.awt.Panel;
+
 import java.io.File;
 import java.io.IOException;
 import java.nio.file.Paths;
 
 import javax.imageio.ImageIO;
+import javax.swing.JButton;
 import javax.swing.JFrame;
+import javax.swing.JPanel;
 import javax.swing.JSlider;
 
 public class Klausur_2013_2 extends JFrame {
-	private Panel drawinPanel;
+	private JPanel drawinPanel;
 	private int percent = 1;
 	volatile boolean fill;
 
 	public Klausur_2013_2(){
 		setLayout(new BorderLayout());
-		drawinPanel = new Panel(){
+		drawinPanel = new JPanel(){
 			@Override
-			public void paint(Graphics g){
+			public void paintComponent(Graphics g){
+				super.paintComponent(g);
 				int width = (getWidth() * percent)/100;
 				int height = getHeight() * percent /100;
 				try {
@@ -41,7 +44,7 @@ public class Klausur_2013_2 extends JFrame {
 			}
 		};
 		drawinPanel.setPreferredSize(new Dimension(500,500));
-		Panel buttonPanel = new Panel();
+		JPanel buttonPanel = new JPanel();
 		buttonPanel.setLayout(new FlowLayout());
 		JSlider slider = new JSlider(0,100, 1);
 		slider.addChangeListener(e->{
@@ -49,7 +52,7 @@ public class Klausur_2013_2 extends JFrame {
 			drawinPanel.repaint();
 		});
 		buttonPanel.add(slider);
-		Button fillButton = new Button("fill");
+		JButton fillButton = new JButton("fill");
 		fillButton.addActionListener(e->{
 			if(fill)
 				fill = false;
