@@ -124,6 +124,32 @@ float avg_helper(Node n, int sum, int count) {
 			}
 	}
 	
+	public int[] count(){
+		int[] helpArray = new int[2]; //0 = numberOfNodes, 1 = arrayindex
+		countT(m_Root, helpArray);
+		int laenge = helpArray[0];
+		int[] tmp = new int[laenge];
+		System.out.println("lange " + laenge);
+		countHelper(m_Root, tmp,  helpArray);
+		return tmp;
+	}
+	private void countT(Node n, int[] helpArray){
+		if(n != null){	
+			helpArray[0]++;
+			countT(n.m_Left, helpArray);
+			countT(n.m_Right, helpArray);		
+		}		
+		
+	}
+	private void countHelper(Node n, int[] arr, int[] helpArray){
+		if(n != null){		
+			countHelper(n.m_Left, arr, helpArray);	
+			arr[helpArray[1]++] = n.m_Key;
+			countHelper(n.m_Right, arr, helpArray);				
+		}
+	}
+	
+	
 	void deleterHelper(Node parent, Node current, boolean rightChild){
 		if(current  != null){
 			if(current.m_Left == null && current.m_Right == null){
@@ -158,6 +184,10 @@ public static void main(String[] args){
 //			+ " \t\t 6 \t \t \t11");
 	System.out.println("Has to be 6, RESULT:" + tree.secondLast());
 //	System.out.println("min: " + tree.minMax()[0] + " max:" + tree.minMax()[1]);
+	int[] arr = tree.count();
+	for (int i = 0; i < arr.length; i++) {
+		System.out.println(arr[i]);
+	}
 	System.out.println(tree.avg());
 	tree.deleteLeafs();
 	System.out.println("\n");
